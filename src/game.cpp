@@ -34,6 +34,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, snakes_);
+    //snakes_[2]->ChangeDirection(); // update viper direction randomly
     Update();
     renderer.Render(snakes_, foods);
 
@@ -113,7 +114,6 @@ void Game::Update() {
     // touch the body of viper
     for(auto const &item : viper->body){
       if(new_x == item.x && new_y == item.y){
-        snake->alive = false;
         if (snake->GetSnakeId() == 0) {
           left_alive = false;
         }
@@ -123,9 +123,11 @@ void Game::Update() {
         std::cout << "============================================" << std::endl;
         std::cout <<  "  Your Snake Touches The Viper, Gamer Over!"  << std::endl;
         std::cout << "============================================" << std::endl;
+        snakes_[0]->alive = false;
+        snakes_[1]->alive = false;
         return;
       }
-  }
+    }
   }
 }
 

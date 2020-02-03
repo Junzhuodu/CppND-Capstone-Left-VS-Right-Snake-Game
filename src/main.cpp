@@ -16,11 +16,11 @@ int main() {
   Game game(kGridWidth, kGridHeight);
   game.Run(controller, renderer, kMsPerFrame);
   if (!game.GetLeftStatus() && game.GetRightStatus()) {
-    std::cout << "Left Snake Touches Viper, Right Snake Winks!" << "\n";
+    std::cout << "Left Snake Touches Viper, Right Snake Wins!" << "\n";
     return 0;
   }
   if (game.GetLeftStatus() && !game.GetRightStatus()) {
-    std::cout << "Right Snake Touches Viper, Left Snake Winks!" << "\n";
+    std::cout << "Right Snake Touches Viper, Left Snake Wins!" << "\n";
     return 0;
   }
   std::cout << "Game has terminated successfully!\n";

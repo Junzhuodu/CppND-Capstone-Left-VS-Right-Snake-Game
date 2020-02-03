@@ -2,6 +2,7 @@
 #define SNAKE_H
 
 #include <vector>
+#include <memory>
 #include "SDL.h"
 
 class Snake {
@@ -22,7 +23,7 @@ class Snake {
 
   Direction direction = Direction(rand() % 4);
 
-  float speed{0.05f};
+  float speed{0.1f};
   int size{1};
   bool alive{true};
   float head_x;
@@ -30,6 +31,7 @@ class Snake {
   std::vector<SDL_Point> body;
 
   int GetSnakeId() const { return snake_id_; }
+  void ChangeDirection();
 
  private:
   void UpdateHead();
