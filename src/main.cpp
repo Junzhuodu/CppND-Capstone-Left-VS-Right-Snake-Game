@@ -15,8 +15,27 @@ int main() {
   Controller controller;
   Game game(kGridWidth, kGridHeight);
   game.Run(controller, renderer, kMsPerFrame);
+  if (!game.GetLeftStatus() && game.GetRightStatus()) {
+    std::cout << "Left Snake Touches Viper, Right Snake Winks!" << "\n";
+    return 0;
+  }
+  if (game.GetLeftStatus() && !game.GetRightStatus()) {
+    std::cout << "Right Snake Touches Viper, Left Snake Winks!" << "\n";
+    return 0;
+  }
   std::cout << "Game has terminated successfully!\n";
-  std::cout << "Score: " << game.GetScore() << "\n";
-  std::cout << "Size: " << game.GetSize() << "\n";
+  std::cout << "ScoreLeft: " << game.GetLeftScore() << "\n";
+  std::cout << "SizeLeft: " << game.GetLeftSize() << "\n";
+  std::cout << "ScoreRight: " << game.GetRightScore() << "\n";
+  std::cout << "SizeRight: " << game.GetRightSize() << "\n";
+  if (game.GetLeftScore() > game.GetRightScore()) {
+    std::cout << "Left Snake Wins!" << "\n";
+  }
+  else if (game.GetLeftScore() < game.GetRightScore()) {
+    std::cout << "Right Snake Wins!" << "\n";
+  }
+  else {
+    std::cout << "It's a Tie!" << "\n";
+  }
   return 0;
 }
